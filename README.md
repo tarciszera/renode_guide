@@ -19,11 +19,10 @@ The instalation of renode could be done by
 
  ```sh
 git clone https://github.com/renode/renode
+...
 cd renode
-
 git submodule update --init --recursive
-
-# -v Verbose flag
+...
 ./build.sh -v
  ```
 
@@ -37,7 +36,11 @@ Renode have some chips and boards implemented already, though it's possible to d
 
 When you run:
 ```sh
-# Must be on PATH
+cd renode
+./renode
+```
+if renode is on PATH:
+```sh
 renode
 ```
 A terminal like GUI is open, and it seems like this:
@@ -45,6 +48,16 @@ A terminal like GUI is open, and it seems like this:
 ![](./img/renode_gui.png)
 
 There machines could be created, runned and dellete. For more information please refere to [this](https://renode.readthedocs.io/en/latest/introduction/using.html). You also can run your first `demo`, what is decribed [here](https://renode.readthedocs.io/en/latest/introduction/demo.html).
+
+## Creating a custom .repl file for STM32H750
+
+Using `path/to/renode/plataforms/cpus/stm32f746.repl` as example and ST `RM0433 Reference manual` for peripherals description:
+
+![](./img/stm32h7_permem.png)
+![](./img/stm32h7_permem1.png)
+![](./img/stm32h7_permem2.png)
+![](./img/stm32h7_permem3.png)
+![](./img/stm32h7_permem4.png)
 
 ## Creating a custom peripheral C#
 
@@ -75,7 +88,6 @@ For reference, the `WithValueField(...)` params order and explanation as followi
 Following the especification of each GPIO register for STM32H750xB and renodes implementation:
 
 ![](./img/stm_gpio_moder.png)
-
 
 ---
 
