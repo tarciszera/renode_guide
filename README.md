@@ -18,17 +18,13 @@ The instalation of renode could be done by
  and instalation:
 
  ```sh
- git clone https://github.com/renode/renode
+git clone https://github.com/renode/renode
+cd renode
 
- cd renode
- ./build.sh -v
- ```
+git submodule update --init --recursive
 
-Or by precompiled .deb package download from [here](https://renode.io/#downloads), then installing by apt:
-
- ```sh
- # Easiest way!
- sudo apt install /path/to/package.deb
+# -v Verbose flag
+./build.sh -v
  ```
 
 ## Plataforms
@@ -48,4 +44,28 @@ A terminal like GUI is open, and it seems like this:
 
 ![](./img/renode_gui.png)
 
-There machines could be created, runned and dellete. For more information please reffere to [this](https://renode.readthedocs.io/en/latest/introduction/using.html). You also can run your first `demo`, what is decribed [here](https://renode.readthedocs.io/en/latest/introduction/demo.html).
+There machines could be created, runned and dellete. For more information please refere to [this](https://renode.readthedocs.io/en/latest/introduction/using.html). You also can run your first `demo`, what is decribed [here](https://renode.readthedocs.io/en/latest/introduction/demo.html).
+
+## Creating a custom peripheral C#
+
+This project have few implementations yet, so for general use, you must implement your hardware somehow. Here using a implementation as example, we try to exaplain how peripheral implementation works.
+
+Using a GPIO as reference from `/renode/src/Infrastructure/src/Emulator/Peripherals/Peripherals/GPIOPort/`, beggining with it's properties:
+
+![](./img/GPIO_private_properties.png)
+
+- DoubleWordRegister (`DWR`) is the base class for any 32 bits register, and DoubleWordRegisterCollection (`DWRC`) is a set of `DWR`.
+- PinMode type is basicaly the pin input and output modes possibilities on a enum type.
+- Registers type is a set of offsets from the peripheral offset for each register.
+
+GPIOport constructor is presented on the following image:
+
+![](./img/GPIO_port_constructor.png)
+
+On this example `pins` and `registers` are defined, highlighting the `WithValueField(...)` method. The fields on registers and its actions are defined here by the callback functions. Like in the following image, multiple fields can be defined on each `WithValueField(...)` call.
+
+![](./img/multiple_fields_definition.png)
+
+For reference, the `WithValueField(...)` params order and explanation as following:
+
+![](./img/wvf_params.png)
