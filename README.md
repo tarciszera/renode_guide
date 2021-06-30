@@ -69,3 +69,47 @@ On this example `pins` and `registers` are defined, highlighting the `WithValueF
 For reference, the `WithValueField(...)` params order and explanation as following:
 
 ![](./img/wvf_params.png)
+
+### Implementing STM32H750xB GPIO peripheral
+
+Following the especification of each GPIO register for STM32H750xB and renodes implementation:
+
+![](./img/stm_gpio_moder.png)
+
+
+---
+
+![](./img/stm_gpio_otyper0.png)
+![](./img/stm_gpio_otyper1.png)
+
+---
+
+![](./img/stm_gpio_ospeedr.png)
+
+---
+
+![](./img/stm_gpio_inputdatar.png)
+
+---
+
+![](./img/stm_gpio_outputdatar.png)
+
+---
+
+![](./img/stm_gpio_bisetreset0.png)
+![](./img/stm_gpio_bisetreset1.png)
+
+---
+
+![](./img/stm_gpio_lckr0.png)
+![](./img/stm_gpio_lckr1.png)
+
+---
+
+![](./img/stm_gpio_afrl0.png)
+![](./img/stm_gpio_afrl1.png)
+
+---
+
+![](./img/stm_gpio_afrh0.png)
+![](./img/stm_gpio_afrh1.png)
